@@ -6,10 +6,10 @@ const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
     username: "",
-    email: "",
     password: "",
+    email: "",
     firstName: "",
-    lastName: "",
+    lastName: ""
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
@@ -68,6 +68,13 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
+        <label htmlFor="fav_language">
+          <p>Please select if you are a student or a tutor</p>
+          <input type="radio" id="Student" name="fav_language" value="HTML"></input>
+          <label for="Student">Student</label>
+          <input type="radio" id="Tutor" name="fav_language" value="HTML"></input>
+          <label for="Tutor">Tutor</label>
+        </label>
         <button>Register!</button>
       </form>
     </div>
