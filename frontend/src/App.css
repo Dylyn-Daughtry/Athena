@@ -35,7 +35,6 @@ button:hover {
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
   overflow: auto;
   text-align: center;
 }
@@ -55,4 +54,9 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+.Main_Body {
+  display: flex;
+  
 }

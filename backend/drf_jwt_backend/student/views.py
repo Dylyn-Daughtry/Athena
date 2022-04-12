@@ -1,4 +1,4 @@
-from tkinter import S
+from urllib import response
 from .models import Student
 from .serializers import StudentSerializer
 from rest_framework import status
@@ -39,3 +39,10 @@ def user_student(request):
         student = Student.objects.filter(user_id=request.user.id)
         serializer = StudentSerializer(student, many=True)
         return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_student_by_uid(request, id):
+    student = Student.objects.filter(user_id=id)
+    serializer = StudentSerializer(student, many=True)
+    return Response(serializer.data)

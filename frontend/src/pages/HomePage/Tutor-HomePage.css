@@ -1,0 +1,28 @@
+.profile_pic {
+    width: 400px;
+    height: 400px;
+}
+
+.info_Display {
+    justify-content: left;
+}
+
+.avatar_Display{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.homePage {
+    width: 100%;
+    justify-content: left;
+    display: flex;
+}
+
+.calendar_Display {
+    width: 100%;
+}
+
+.calendar {
+    width: auto;
+    min-width: 400px;
+}

@@ -8,4 +8,5 @@ class Student(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     school = models.CharField(max_length=100)
     grade = models.IntegerField()
+    major = models.CharField(max_length=100, null=True)
     about_me = models.CharField(max_length=500)

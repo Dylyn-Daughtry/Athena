@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import useAuth from "../hooks/useAuth";
 
 const AuthContext = createContext();
 
@@ -36,17 +37,57 @@ export const AuthProvider = ({ children }) => {
         first_name: registerData.firstName,
         last_name: registerData.lastName
       };
-      console.log(finalData)
+      let student = {
+        user : "",
+        school: registerData.school,
+        grade: registerData.grade,
+        major: registerData.major,
+        about_me: "Test"
+      }
+      let tutor = {
+        user: "",
+        rates: registerData.rates,
+        availability: registerData.availability,
+        subjects: registerData.subjects
+      }
+
       let response = await axios.post(`${BASE_URL}/register/`, finalData);
       if (response.status === 201) {
         console.log("Successful registration! Log in to access token");
-        setIsServerError(false);
-        navigate("/login");
+        let login_response = await axios.post(`${BASE_URL}/login/`, {username:finalData.username, password: finalData.password});
+        if (login_response.status === 200) {
+          localStorage.setItem("token", JSON.stringify(login_response.data.access));
+          setToken(JSON.parse(localStorage.getItem("token")));
+          let loggedInUser = jwtDecode(login_response.data.access);
+          setUser(setUserObject(loggedInUser));
+          if (registerData.is_student === 'true'){
+            student.user = response.data.id;
+            let student_response = await axios.post("http://127.0.0.1:8000/api/student/", student, 
+            {
+              headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
+              },
+            });
+            setIsServerError(false);
+            navigate("/student");
+          }
+          else {
+            tutor.user = response.data.id;
+            let tutor_response = await axios.post("http://127.0.0.1:8000/api/tutor/", tutor, 
+            {
+              headers: {
+                Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
+              },
+            });
+            setIsServerError(false);
+            navigate("/tutor");
+          }
+        } 
       } else {
         navigate("/register");
       }
     } catch (error) {
-      console.log(error.toJSON());
+      console.log(error);
     }
   };
 
@@ -58,8 +99,28 @@ export const AuthProvider = ({ children }) => {
         setToken(JSON.parse(localStorage.getItem("token")));
         let loggedInUser = jwtDecode(response.data.access);
         setUser(setUserObject(loggedInUser));
-        setIsServerError(false);
-        navigate("/");
+        let uid = loggedInUser.user_id;
+        let student_response = await axios.get("http://127.0.0.1:8000/api/student/user/" + uid, 
+        {
+          headers: {
+            Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
+          },
+        });
+        let tutor_response = await axios.get("http://127.0.0.1:8000/api/tutor/user/" + uid, 
+        {
+          headers: {
+            Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
+          },
+        });
+        if (student_response.data.length !== 0){
+          setIsServerError(false);
+          navigate("/student");
+        }
+        else {
+          setIsServerError(false);
+          navigate("/tutor");
+        }
+        
       } else {
         navigate("/register");
       }

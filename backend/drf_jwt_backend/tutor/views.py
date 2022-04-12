@@ -38,3 +38,10 @@ def user_tutor(request):
         tutor = Tutor.objects.filter(user_id=request.user.id)
         serializer = TutorSerializer(tutor, many=True)
         return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_tutor_by_uid(request, id):
+    tutor = Tutor.objects.filter(user_id=id)
+    serializer = TutorSerializer(tutor, many=True)
+    return Response(serializer.data)
