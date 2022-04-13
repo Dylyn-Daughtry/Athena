@@ -9,19 +9,20 @@ import { Link } from "react-router-dom";
 const Calendar = (props) => {
 
   const [events, setEvents] = useState([]);
+  const [status, setStatus] = useState('student');
 
   useEffect(()=>{
     const fetchEvents = async () => {
       try {
-        let response = await axios.get();
+        let response = await axios.get(`http://127.0.0.1:8000/api/session/${status}/${props.user_id}`);
         setEvents(response.data);
       }
       catch(error){
         console.log(error.message)
       }
     }
-    fetchEvents();
-  }, []);
+    if (props.user_id)fetchEvents();
+  }, [props]);
 
   return (
   <div>

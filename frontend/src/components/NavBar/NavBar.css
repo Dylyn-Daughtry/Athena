@@ -1,11 +1,14 @@
 ul {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   list-style-type: none;
+  align-items: center;
 }
 
 li {
   font-size: 1.25rem;
+  display: inline;
+  text-align: center;
 }
 
 .navBar {
@@ -13,23 +16,65 @@ li {
   box-shadow: 4px 2px 5px gray;
   color: rgb(223, 219, 35);
   margin-bottom: 2rem;
-  padding: 1.5rem 2rem;
+  padding-left: 10px;
 }
 
-.navBar button {
+.navlink {
   background: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 0.4rem 0.5rem;
+  color: rgb(219, 201, 5);
+  margin-left: 50px;
+  margin-top: 20px;
+  
+  
+  /* padding: 0.4rem 0.5rem; */
 }
 
-.navBar button:hover {
-  background: white;
-  color: steelblue;
+.navlink:hover {
+  background: blueviolet;
+  color: rgb(220, 223, 41);
   cursor: pointer;
 }
 
 .brand {
   cursor: pointer;
   font-size: 2rem;
+}
+
+.navBar button {
+  background: transparent;
+  border: 2px solid rgb(219, 201, 5);
+  color: rgb(219, 201, 5);
+  margin-left: 50px;
+  /* padding: 0.4rem 0.5rem; */
+}
+
+.navBar button:hover {
+  background: blueviolet;
+  color: rgb(220, 223, 41);
+  cursor: pointer;
+}
+
+.schedule_session_button {
+  font-size: large;
+  padding: 10px 20px 10px 20px;
+}
+
+.tutor_search_button{
+  font-size: large;
+  padding: 10px 20px 10px 20px;
+}
+
+.logo {
+  height: 4rem;
+  width: auto;
+}
+
+.navlinks {
+  float: left;
+}
+
+.login_logout_button {
+  display: flex;
+  align-content: flex-end;
+  margin-left: 68rem;
 }
