@@ -47,7 +47,7 @@ const Public_Tutor_HomePage = (props) => {
         </div>
         <div className="info_Display">
           <h1 className="Name_Display">{Tutor.id}!</h1>
-          <h2>rates: {Tutor[0]?.rates}</h2>
+          <h2>rates: ${Tutor[0]?.rates}</h2>
           <h2>availability: {Tutor[0]?.availability}</h2>
           <h2>subjects: {Tutor[0]?.subjects}</h2>
           <a className="schedule_session_button">

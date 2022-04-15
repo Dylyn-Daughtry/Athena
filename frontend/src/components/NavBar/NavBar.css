@@ -8,7 +8,7 @@ ul {
 li {
   font-size: 1.25rem;
   display: inline;
-  text-align: center;
+  text-align: left;
 }
 
 .navBar {
@@ -22,7 +22,6 @@ li {
 .navlink {
   background: transparent;
   color: rgb(219, 201, 5);
-  margin-left: 50px;
   margin-top: 20px;
   
   
