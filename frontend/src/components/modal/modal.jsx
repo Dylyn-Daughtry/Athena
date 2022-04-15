@@ -21,7 +21,7 @@ const Modal=(props)=> {
                 <div className="modal-body" onClick={e=>{e.stopPropagation()}}>
                     {props.children}
                     <br/>
-                    <button className="modal-close" onClick={props.onClick}>Cancel Registration</button>
+                    <button className="modal-close" onClick={props.onClick}>Cancel</button>
                 </div>
             </div>
             

@@ -93,6 +93,8 @@ const RegisterPage = () => {
           <input type="radio" id="Tutor" name="is_student" value={false} checked={isStudent==='false'} onChange={handleStudentChange}></input>
           <label for="Tutor">Tutor</label>
         </label>
+        {isStudent === 'true' && 
+        <>
         <label>
           School:{" "}
           <input
@@ -100,7 +102,7 @@ const RegisterPage = () => {
             name="school"
             value={formData.school}
             onChange={handleInputChange}
-          />
+            />
         </label>
         <label>
           Grade:{' '}
@@ -109,7 +111,7 @@ const RegisterPage = () => {
             name="grade"
             value={formData.grade}
             onChange={handleInputChange}
-          />
+            />
         </label>
         <label>
           Major:{" "}
@@ -118,8 +120,12 @@ const RegisterPage = () => {
             name="major"
             value={formData.major}
             onChange={handleInputChange}
-          />
+            />
         </label>
+            </>
+        }
+        {isStudent === 'false' &&
+        <>
         <label>
           Rates:{' '}
           <input
@@ -127,7 +133,7 @@ const RegisterPage = () => {
             name="rates"
             value={formData.rates}
             onChange={handleInputChange}
-          />
+            />
         </label>
         <label>
           Availability:{" "}
@@ -136,7 +142,7 @@ const RegisterPage = () => {
             name="availability"
             value={formData.availability}
             onChange={handleInputChange}
-          />
+            />
         </label>
         <label>
           Subjects:{" "}
@@ -145,8 +151,10 @@ const RegisterPage = () => {
             name="subjects"
             value={formData.subjects}
             onChange={handleInputChange}
-          />
+            />
         </label>
+            </>
+        }
         <button>Register!</button>
         <br></br>
         <br></br>

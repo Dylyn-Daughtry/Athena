@@ -71,10 +71,11 @@ li {
 
 .navlinks {
   float: left;
+  width: 60rem;
 }
 
 .login_logout_button {
   display: flex;
   align-content: flex-end;
-  margin-left: 68rem;
+  margin-left: 30rem;
 }

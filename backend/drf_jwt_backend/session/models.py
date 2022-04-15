@@ -8,4 +8,5 @@ class Session(models.Model):
     tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
     subject = models.CharField(max_length=50)
     date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, null=True)
     

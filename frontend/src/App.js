@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Tutor_HomePage from "./pages/HomePage/Tutor-HomePage";
 import Student_HomePage from "./pages/HomePage/Student-HomePage";
+import InboxPage from "./pages/InboxPage/InboxPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -15,6 +16,8 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import Public_Tutor_HomePage from "./pages/PublicTutorPage/PublicTutorPage";
 
 function App() {
   return (
@@ -40,6 +43,11 @@ function App() {
           />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/student/search" element={<SearchPage />} />
+          <Route path="/tutor" >
+          <Route path=":id" element={<Public_Tutor_HomePage/>} />
+          <Route path="/tutor/inbox" element={<InboxPage/>} />
+          </Route>
         </Routes>
       </div>
       <Footer />

@@ -13,6 +13,13 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token["first_name"] = user.first_name
         return token
 
+class NestedUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        # If added new columns through the User model, add them in the fields
+        # list as seen below
+        fields = ('id', 'username', 'email',
+                  'first_name', 'last_name')
 
 class RegistrationSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True, validators=[

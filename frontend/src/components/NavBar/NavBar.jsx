@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
 import logo from './../../Images/athenalogo.png'
 
+
+
+
 const Navbar = () => {
+  
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+ 
+
+
+
   return (
     <div className="navBar">
       <ul>
@@ -17,8 +25,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="navlinks"> 
-          <a className="schedule_session_button navlink">Schedule Session</a>
-          <a className="tutor_search_button navlink">Tutors</a>
+          <Link to='/student/search' className="tutor_search_button navlink">Tutors</Link>
         </li>
         <li className="login_logout_button">
           {user ? (

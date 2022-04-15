@@ -1,0 +1,10 @@
+.newSession {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    align-content: center;
+    color: gold;
+    margin-left: 13rem;
+    margin-top: 7rem;
+}
+
